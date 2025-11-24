@@ -1,4 +1,4 @@
-require('dotenv').config();                // 读取 .env
+require('dotenv').config();                
 const express       = require('express');
 const bodyParser    = require('body-parser');
 const session       = require('express-session');
@@ -8,7 +8,6 @@ const app = express();
 const PORT = 3000;
 
 
-/* ---------- 通用中间件 ---------- */
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -20,7 +19,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-/* ---------- 登录 ---------- */
 const USERNAME = 'admin';
 const PASSWORD = '123456';
 
@@ -40,7 +38,6 @@ function requireLogin(req, res, next) {
   next();
 }
 
-/* ---------- MongoDB 连接 ---------- */
 let coll; // 将指向 S381cargoDB.cargos
 (async () => {
   const client = new MongoClient(process.env.MONGO_URI);
@@ -48,12 +45,10 @@ let coll; // 将指向 S381cargoDB.cargos
   coll = client.db('S381cargoDB').collection('cargos');
   console.log('✅ MongoDB connected');
 
-  /* ---------- 路由 ---------- */
+  
 
-  // 首页
   app.get('/', requireLogin, (_, res) => res.render('index'));
 
-  // 入库
   app.get('/inbound', requireLogin, (_, res) => res.render('inbound'));
   app.post('/inbound', requireLogin, async (req, res) => {
     const { name, code, quantity, remark } = req.body;
@@ -61,7 +56,6 @@ let coll; // 将指向 S381cargoDB.cargos
     res.render('inbound', { message: `Added: ${name} (Code: ${code}, Quantity: ${quantity})` });
   });
 
-  // 出库
   app.get('/outbound', requireLogin, (_, res) => res.render('outbound'));
   app.post('/outbound', requireLogin, async (req, res) => {
     const { code } = req.body;
@@ -73,7 +67,6 @@ let coll; // 将指向 S381cargoDB.cargos
     });
   });
 
-  // 编辑
   app.get('/edit', requireLogin, (_, res) => res.render('edit'));
   app.post('/edit', requireLogin, async (req, res) => {
     const { code, newName, newQuantity, newRemark } = req.body;
@@ -93,7 +86,6 @@ let coll; // 将指向 S381cargoDB.cargos
     }
   });
 
-  // 搜索
   app.get('/search', requireLogin, (_, res) => res.render('search'));
   app.post('/search', requireLogin, async (req, res) => {
     const { keyword } = req.body;
@@ -103,7 +95,6 @@ let coll; // 将指向 S381cargoDB.cargos
     res.render('search', cargo ? { cargo } : { message: 'No cargo found.' });
   });
 
-  // 列表
   app.get('/list', requireLogin, async (_, res) => {
     const cargos = await coll.find({}, { projection: { _id: 0 } }).toArray();
     res.render('list', { cargos });
@@ -137,7 +128,6 @@ let coll; // 将指向 S381cargoDB.cargos
     res.json(r.deletedCount ? { deleted: true } : { error: 'Not found' });
   });
 
-  /* ---------- 启动 ---------- */
   app.listen(PORT, () => {
     console.log(`Server started: http://localhost:${PORT}`);
     console.log('Current mode: MongoDB Atlas');
@@ -146,3 +136,4 @@ let coll; // 将指向 S381cargoDB.cargos
   console.error('MongoDB connection error:', err);
   process.exit(1);
 });
+
