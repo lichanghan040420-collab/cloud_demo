@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>货物管理系统 - 编辑</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #3b82f6;
+      --accent-2: #10b981;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --hover: #2563eb;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 15% 10%, #0b1022, var(--bg));
+      color: var(--text);
+    }
+    header { padding: 24px 20px; border-bottom: 1px solid var(--border); background: rgba(17,24,39,0.6); }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; color: white; font-weight: 700; }
+    .title { font-size: 20px; font-weight: 700; }
+    .subtitle { font-size: 13px; color: var(--muted); }
+    main { max-width: 980px; margin: 28px auto; padding: 0 20px 40px; }
+    .hero { padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(180deg, rgba(59,130,246,0.08), transparent); margin-bottom: 22px; }
+    .hero h1 { margin: 0 0 8px; font-size: 28px; }
+    .hero p { margin: 0; color: var(--muted); font-size: 14px; }
+    .layout { display: flex; gap: 20px; margin-top: 24px; }
+    .sidebar { width: 200px; display: flex; flex-direction: column; gap: 12px; }
+    .sidebar a { padding: 10px 12px; border-radius: 10px; border: 1px solid #28446b; color: #e6f0ff; background: linear-gradient(180deg, #184071, #16365e); text-decoration: none; font-weight: 600; text-align: center; }
+    .sidebar a:hover { background: linear-gradient(180deg, var(--hover), #1b4db0); border-color: #2a5bb8; }
+    .content { flex: 1; border: 1px solid var(--border); border-radius: 14px; padding: 20px; background: var(--card); }
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .field label { font-size: 13px; color: var(--muted); }
+    .input { padding: 10px 12px; border-radius: 10px; border: 1px solid #28446b; background: #0c1324; color: var(--text); }
+    .btn { padding: 10px 12px; border-radius: 10px; border: 1px solid #28446b; color: #e6f0ff; background: linear-gradient(180deg, #184071, #16365e); cursor: pointer; font-weight: 600; }
+    .btn:hover { background: linear-gradient(180deg, var(--hover), #1b4db0); border-color: #2a5bb8; }
+    footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; padding: 18px 20px; text-align: center; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">GM</div>
+      <div>
+        <div class="title">货物管理系统</div>
+        <div class="subtitle">高效入库 | 精准出库 | 快速查询 | 安全编辑</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>货物编辑</h1>
+      <p>在此页面修改已有的货物信息。</p>
+    </section>
+
+    <div class="layout">
+      <!-- 左侧导航 -->
+      <nav class="sidebar">
+        <a href="index.html">主页</a>
+        <a href="inbound.html">入库</a>
+        <a href="outbound.html">出库</a>
+        <a href="search.html">查找</a>
+      </nav>
+
+      <!-- 右侧编辑功能 -->
+      <div class="content">
+        <form id="editForm">
+          <div class="field">
+            <label for="code">货物编号（必填）</label>
+            <input class="input" id="code" name="code" type="text" required />
+          </div>
+          <div class="field">
+            <label for="newName">新货物名称</label>
+            <input class="input" id="newName" name="newName" type="text" />
+          </div>
+          <div class="field">
+            <label for="newQuantity">新货物数量</label>
+            <input class="input" id="newQuantity" name="newQuantity" type="number" />
+          </div>
+          <div class="field">
+            <label for="newRemark">新备注</label>
+            <textarea class="input" id="newRemark" name="newRemark"></textarea>
+          </div>
+          <button class="btn" type="submit">更新货物</button>
+        </form>
+        <div id="message"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 货物管理系统
+  </footer>
+
+  <script>
+    const form = document.getElementById("editForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const code = document.getElementById("code").value;
+      const newName = document.getElementById("newName").value;
+      const newQuantity = document.getElementById("newQuantity").value;
+      const newRemark = document.getElementById("newRemark").value;
+
+      // 实际项目中这里应调用后端 API 更新 MongoDB
+      // 示例：fetch("/edit", { method:"POST", body: JSON.stringify({ code, newName, newQuantity, newRemark }) })
+
+      // 前端演示：假设更新成功
+      message.textContent = `编号 ${code} 已更新：名称=${newName}, 数量=${newQuantity}, 备注=${newRemark}`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>

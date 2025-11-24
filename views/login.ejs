@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cargo Management System - Login</title>
+  <style>
+    :root {
+      --card: rgba(17, 24, 39, 0.6);
+      --accent: #3b82f6;
+      --accent-2: #10b981;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --hover: #2563eb;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: url("/images/login-bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 24px;
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card h1 { margin: 0; font-size: 24px; text-align: center; }
+    .card p { margin: 0; font-size: 14px; color: var(--muted); text-align: center; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; color: var(--muted); }
+    .input {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #28446b;
+      background: rgba(12, 19, 36, 0.6);
+      color: var(--text);
+    }
+    .input:focus {
+      outline: none;
+      border-color: var(--hover);
+      box-shadow: 0 0 0 3px rgba(147,197,253,0.25);
+    }
+    .btn {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #28446b;
+      color: #e6f0ff;
+      background: linear-gradient(180deg, #184071, #16365e);
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+    }
+    .btn:hover { background: linear-gradient(180deg, var(--hover), #1b4db0); border-color: #2a5bb8; }
+    .error { color: var(--danger); font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <article class="card">
+    <h1>Login</h1>
+    <p>Please enter your nickname and password to continue.</p>
+    <form action="/login" method="post">
+      <div class="field">
+        <label for="nickname">Nickname</label>
+        <input class="input" id="nickname" name="nickname" type="text" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" required />
+      </div>
+
+      <% if (errorMessage) { %>
+        <p class="error"><%= errorMessage %></p>
+      <% } %>
+
+      <button class="btn" type="submit">Login</button>
+    </form>
+  </article>
+</body>
+</html>

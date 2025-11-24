@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cargo Management System - Home</title>
+  <style>
+    :root {
+      --card: rgba(17, 24, 39, 0.6); /* 半透明背景 */
+      --accent: #3b82f6;
+      --accent-2: #10b981;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --hover: #2563eb;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      /* 背景图片 */
+      background: url("/images/index.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+    }
+    header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(8px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      color: white; font-weight: 700;
+    }
+    .title { font-size: 20px; font-weight: 700; }
+    .subtitle { font-size: 13px; color: var(--muted); }
+
+    main { max-width: 980px; margin: 28px auto; padding: 0 20px 40px; }
+
+    /* 模糊透明效果容器 */
+    .glass {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.25; }
+    .hero p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .grid { margin-top: 22px; display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 880px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .card h3 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+    .card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .card a {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #28446b;
+      color: #e6f0ff;
+      background: linear-gradient(180deg, #184071, #16365e);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover { background: linear-gradient(180deg, var(--hover), #1b4db0); border-color: #2a5bb8; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 18px 20px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      background: rgba(17, 24, 39, 0.6);
+    }
+    .icon {
+      width: 28px; height: 28px;
+      display: inline-grid; place-items: center;
+      border-radius: 8px;
+      background: #182235;
+      border: 1px solid #253246;
+      color: #9dc2ff;
+    }
+  </style>
+</head>
+<body>
+  <header class="glass">
+    <div class="brand">
+      <div>
+        <div class="title">Cargo Management System</div>
+        <div class="subtitle">Efficient Inbound | Accurate Outbound | Quick Search | Secure Edit</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero glass">
+      <h1>Home</h1>
+      <p>Please select the operation you need.</p>
+    </section>
+
+    <section>
+      <div class="grid">
+        <!-- Inbound -->
+        <article class="card">
+          <h3><span class="icon">⬆️</span> Cargo Inbound</h3>
+          <p>Add new cargo records.</p>
+          <a href="/inbound">Go to Inbound</a>
+        </article>
+
+        <!-- Outbound -->
+        <article class="card">
+          <h3><span class="icon">⬇️</span> Cargo Outbound</h3>
+          <p>Delete cargo records.</p>
+          <a href="/outbound">Go to Outbound</a>
+        </article>
+
+        <!-- Edit -->
+        <article class="card">
+          <h3><span class="icon">✏️</span> Cargo Edit</h3>
+          <p>Modify cargo information.</p>
+          <a href="/edit">Go to Edit</a>
+        </article>
+
+        <!-- Search -->
+        <article class="card">
+          <h3><span class="icon">🔎</span> Cargo Search</h3>
+          <p>Search cargo information.</p>
+          <a href="/search">Go to Search</a>
+        </article>
+
+        <!-- List -->
+        <article class="card">
+          <h3><span class="icon">📋</span> Cargo List</h3>
+          <p>Browse all cargo records.</p>
+          <a href="/list">Go to List</a>
+        </article>
+
+        <!-- Logout -->
+        <article class="card">
+          <h3><span class="icon">🚪</span> Logout</h3>
+          <p>Exit the system and return to the login page.</p>
+          <a href="/login">Logout</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+
+</body>

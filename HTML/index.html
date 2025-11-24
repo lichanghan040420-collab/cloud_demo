@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>货物管理系统 - 首页</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #3b82f6;
+      --accent-2: #10b981;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --hover: #2563eb;
+      --focus: #93c5fd;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1200px 600px at 15% 10%, #0b1022, var(--bg));
+      color: var(--text);
+    }
+
+    /* Header */
+    header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      backdrop-filter: saturate(150%) blur(6px);
+      background: rgba(17, 24, 39, 0.6);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      color: white; font-weight: 700;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+    }
+    .title {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .subtitle {
+      font-size: 13px; color: var(--muted);
+    }
+
+    /* Main */
+    main {
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 0 20px 40px;
+    }
+
+    .hero {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(59,130,246,0.08), transparent);
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.25;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Action grid */
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (min-width: 880px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #2b3948;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card p {
+      margin: 0; color: var(--muted); font-size: 13px;
+    }
+    .card a, .card button {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #28446b;
+      color: #e6f0ff;
+      background: linear-gradient(180deg, #184071, #16365e);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card a:hover, .card button:hover {
+      background: linear-gradient(180deg, var(--hover), #1b4db0);
+      border-color: #2a5bb8;
+      box-shadow: 0 6px 18px rgba(59,130,246,0.35);
+    }
+    .card a:focus-visible, .card button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    /* Utility icon badge */
+    .icon {
+      width: 28px; height: 28px;
+      display: inline-grid; place-items: center;
+      border-radius: 8px;
+      background: #182235;
+      border: 1px solid #253246;
+      color: #9dc2ff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" aria-label="系统品牌">
+      <div class="logo" aria-hidden="true">GM</div>
+      <div>
+        <div class="title">货物管理系统</div>
+        <div class="subtitle">高效入库 | 精准出库 | 快速查询 | 安全编辑</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="系统简介">
+      <h1>首页</h1>
+      <p>请选择需要的操作。可将下方链接指向实际页面：/inbound、/outbound、/edit、/search。</p>
+    </section>
+
+    <section aria-label="功能导航">
+      <div class="grid">
+       <!-- 入库 -->
+        <article class="card" aria-labelledby="inbound-title">
+          <h3 id="inbound-title">
+            <span class="icon" aria-hidden="true">⬆️</span> 货物入库
+          </h3>
+          <p>新增货物记录、批量导入与库位分配。</p>
+          <!-- 修改为相对路径 -->
+          <a href="inbound.html" aria-label="前往货物入库页面">进入入库</a>
+        </article>
+
+        <!-- 货物出库 -->
+        <article class="card" aria-labelledby="outbound-title">
+          <h3 id="outbound-title">
+            <span class="icon" aria-hidden="true">⬇️</span> 货物出库
+          </h3>
+          <p>按订单或拣货单出库，支持批次与数量校验。</p>
+          <a href="outbound.html" aria-label="前往货物出库页面">进入出库</a>
+        </article>
+
+        <!-- 货物编辑 -->
+        <article class="card" aria-labelledby="edit-title">
+          <h3 id="edit-title">
+            <span class="icon" aria-hidden="true">✏️</span> 货物编辑
+          </h3>
+          <p>修改货物信息、库存数量、库位和标签。</p>
+          <a href="edit.html" aria-label="前往货物编辑页面">进入编辑</a>
+        </article>
+
+        <!-- 货物查找 -->
+        <article class="card" aria-labelledby="search-title">
+          <h3 id="search-title">
+            <span class="icon" aria-hidden="true">🔎</span> 货物查找
+          </h3>
+          <p>按名称、SKU、条码或库位快速查询。</p>
+          <a href="search.html" aria-label="前往货物查找页面">进入查找</a>
+        </article>
+
+        <!-- 登出 -->
+        <article class="card">
+          <h3><span class="icon">🚪</span> 登出</h3>
+          <p>退出系统，返回登录界面。</p>
+          <a href="login.html">登出</a>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 货物管理系统 · 提示：将上述链接指向你的实际路由或页面文件
+  </footer>
+</body>
