@@ -6,7 +6,7 @@
   - Wang Yaoshun (SID: 13071522)
   - Li Changhan (SID: 13077194)
   - Fan Zekun (SID: 1305732 )
-  - <name5> (SID: )
+  - Cheung Chichun (SID: 13137299)
 
 ---
 
@@ -50,7 +50,7 @@
     - Start the Express server and listen on a port
     - Configure middleware (body-parser, express-session, static resource directory, etc.)
     - Set up EJS template engine and views directory
-    - Connect to MongoDB database
+    - Connect to MongoDB database(To protect database security, we deploy the link directly in the environment variables of the Render platform)
     - Provide login/logout logic (session-based)
     - Define CRUD page routes (inbound, outbound, edit, search, list)
     - Define RESTful API (/api/cargo) supporting GET/POST/PUT/DELETE
