@@ -2,10 +2,10 @@
 ## Group Info
 - Group No: 5
 - Members:
-  - Ding Peiyang (SID: 13055546)
-  - Wang Yaoshun (SID: 13071522)
-  - Li Changhan (SID: 13077194)
-  - Fan Zekun (SID: 13057320)
+  - Ding PeiYang (SID: 13055546)
+  - Wang YaoShun (SID: 13071522)
+  - Li ChangHan (SID: 13077194)
+  - Fan ZeKun (SID: 13057320)
   - Cheung ChiChung (SID: 13137299)
 
 ---
