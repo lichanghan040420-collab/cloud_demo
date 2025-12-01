@@ -112,11 +112,6 @@ https://cloud-demo-9d7c.onrender.com/
  
 ### Environment Variables Setup
 To ensure the project runs correctly，This project uses a .env file to store sensitive information, such as the MongoDB connection string.
-Replace the placeholders with your actual MongoDB connection details:
-   - <username>: Your MongoDB username (e.g., 2879436287).
-   - <password>: Your MongoDB password (e.g., Fan200438).
-   - <cluster-address>: Your MongoDB cluster address (e.g., cluster0.gbusowo.mongodb.net).
-   - <database-name>: The name of your database (e.g., S381cargoDB).
 ### How the .env File Works
 - The project uses the dotenv package to load the .env file.
 - In the server.js file, the following code ensures the environment variables are loaded:
