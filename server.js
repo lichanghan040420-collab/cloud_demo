@@ -38,7 +38,7 @@ function requireLogin(req, res, next) {
   next();
 }
 
-let coll; // 将指向 S381cargoDB.cargos
+let coll; 
 (async () => {
   const client = new MongoClient(process.env.MONGO_URI);
   await client.connect();
@@ -136,4 +136,5 @@ let coll; // 将指向 S381cargoDB.cargos
   console.error('MongoDB connection error:', err);
   process.exit(1);
 });
+
 
