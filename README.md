@@ -109,6 +109,23 @@ https://cloud-demo-9d7c.onrender.com/
   - First enter the `Cargo Code` in the form, then input `New Cargo Name`, `New Cargo Quantity`, and `New Cargo Remark`.
   - Click the `Update Cargo` button.
   - If successful, the system will update the cargo and display a message: **Cargo ... updated: Name=..., Quantity=...**
+ 
+  ### Environment Variables Setup
+To ensure the project runs correctly，This project uses a .env file to store sensitive information, such as the MongoDB connection string.
+Replace the placeholders with your actual MongoDB connection details:
+   - <username>: Your MongoDB username (e.g., 2879436287).
+   - <password>: Your MongoDB password (e.g., Fan200438).
+   - <cluster-address>: Your MongoDB cluster address (e.g., cluster0.gbusowo.mongodb.net).
+   - <database-name>: The name of your database (e.g., S381cargoDB).
+  ### How the .env File Works
+- The project uses the dotenv package to load the .env file.
+- In the server.js file, the following code ensures the environment variables are loaded:
+  javascript
+  require('dotenv').config();
+  const client = new MongoClient(process.env.MONGO_URI);
+  await client.connect();
+  
+- The process.env.MONGO_URI retrieves the MONGO_URI value from the .env file, allowing the application to connect to the database.
 
 ### RESTful CRUD Services
 - **GET** `/api/cargo/:code` → Retrieve a specific cargo
@@ -137,3 +154,6 @@ curl -X PUT https://cloud-demo-9d7c.onrender.com/api/cargo/T001 \
 ```javascript
 curl -X DELETE https://cloud-demo 9d7c.onrender.com/api/cargo/T001
 ```
+### Environment Variables Setup
+
+To ensure the project runs correctly, you need to configure the environment variables. This project uses a `.env` file to store sensitive information, such as the MongoDB connection string. Follow the steps below to set it up.
