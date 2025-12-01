@@ -149,6 +149,4 @@ curl -X PUT https://cloud-demo-9d7c.onrender.com/api/cargo/T001 \
 ```javascript
 curl -X DELETE https://cloud-demo 9d7c.onrender.com/api/cargo/T001
 ```
-### Environment Variables Setup
 
-To ensure the project runs correctly, you need to configure the environment variables. This project uses a `.env` file to store sensitive information, such as the MongoDB connection string. Follow the steps below to set it up.
