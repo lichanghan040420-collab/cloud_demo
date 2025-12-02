@@ -91,13 +91,13 @@ https://cloud-demo-9d7c.onrender.com/
   - Enter `Cargo Name or Code` in the form.
   - Click the `Search Cargo` button.
   - If successful, the system will display cargo information:
-    **
-    Cargo Information:
+    
+    **Cargo Information:
     Name: ...
     Code: ...
     Quantity: ...
-    Remark: ...
-   **
+    Remark: ...**
+   
     (When searching by name, if multiple cargos share the same name, only the one with the smallest code value will be returned.)  
 
 - **Read**
